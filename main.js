@@ -125,7 +125,7 @@
 (function initTyping() {
   const roles = [
     'AI Engineering Analyst',
-    'MSc in Data Analytics Candidate',
+    'MSc in Data Analytics Graduate',
     'DevOps & Cloud Engineer',
     'Full Stack Developer',
     'Intelligent Systems Architect',
