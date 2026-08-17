@@ -1145,4 +1145,88 @@ section {
   }
 
   .nav-links { display: none; }
+
+  .github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .github-btn:hover {
+    transform: translateY(-2px);
+    background: #1f2937;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .github-btn:active {
+    transform: translateY(0);
+  }
+
+  .project-card-header {
+  position: relative;
+  min-height: 160px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px;
+}
+
+.project-header-label {
+  padding: 7px 12px;
+
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  border-radius: 999px;
+
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+
+  color: var(--accent-teal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card-header .overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.overlay-btn.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 22px;
+  border-radius: 999px;
+
+  font-weight: 700;
+  white-space: nowrap;
+
+  position: relative;
+  z-index: 3;
+}
 }
