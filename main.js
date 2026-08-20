@@ -2,8 +2,6 @@
    PORTFOLIO MAIN JAVASCRIPT
    =================================================== */
 
-import { Analytics } from "@vercel/analytics/next"
-
 // ─── Particles Background ──────────────────────────────────────
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
@@ -252,7 +250,7 @@ function animateSkillBars() {
 })();
 
 
-// ─── Mouse Parallax on Hero Visual ────────────────────────────
+// ─── Mouse Parallax on Hero Visual ─────────────────────���──────
 (function initParallax() {
   const visual = document.querySelector('.hero-visual');
   if (!visual) return;
