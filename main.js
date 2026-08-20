@@ -2,6 +2,8 @@
    PORTFOLIO MAIN JAVASCRIPT
    =================================================== */
 
+import { Analytics } from "@vercel/analytics/next"
+
 // ─── Particles Background ──────────────────────────────────────
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
@@ -127,8 +129,7 @@
     'AI Engineering Analyst',
     'MSc in Data Analytics Graduate',
     'DevOps & Cloud Engineer',
-    'Full Stack Developer',
-    'Intelligent Systems Architect',
+    'Full Stack Developer'
   ];
   const el = document.getElementById('typed-role');
   if (!el) return;
