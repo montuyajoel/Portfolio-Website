@@ -30,6 +30,20 @@ This portfolio was developed with AI-assisted workflows:
 - **Antigravity** — AI-assisted development
 - **Codex** — AI-assisted coding
 
+## Featured Project: HomeCare Scheduler
+
+Microsoft AI103 capstone — full-stack home care platform with caregiver/admin portals and the **Uhie** AI assistant (Microsoft Foundry + RAG + OpenAPI tools).
+
+**Live demo:** [home-care-website-react.vercel.app](https://home-care-website-react.vercel.app)
+
+**Sample accounts (demo data only):**
+- Admin: James Smith · `ADM-003`
+- Caregiver: Sarah Connor · `EMP003`
+
+### Architecture
+
+![HomeCare Scheduler architecture](assets/homecare-scheduler-architecture.png)
+
 ## Project Structure
 
 ```
@@ -38,6 +52,7 @@ portfolio-website/
 ├── style.css       # Global styles and component layout
 ├── main.js         # Particles, tabs, animations, analytics
 ├── profile.png     # Profile image
+├── assets/         # Project images and diagrams
 ├── package.json    # Dependencies and scripts
 └── Dockerfile      # Optional container build (nginx)
 ```
