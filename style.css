@@ -1062,6 +1062,77 @@ section {
 .proj-bg-5 { background: linear-gradient(135deg, #1a1a0d, #3d3d1a); }
 .proj-bg-6 { background: linear-gradient(135deg, #1a0d1a, #3d1a3d); }
 
+/* ===== Featured project highlight ===== */
+.project-card-featured {
+  grid-column: 1 / -1;
+}
+
+.project-card-featured .project-card-body p {
+  margin-bottom: 16px;
+}
+
+.project-capabilities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.project-capability {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.project-capability h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.project-capability ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-capability li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
+.project-capability li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  font-weight: 700;
+}
+
+.project-disclaimer {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  background: rgba(236, 72, 153, 0.06);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.project-disclaimer strong {
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
 /* ===== Awards Layout ===== */
 .awards-grid {
   display: grid;
