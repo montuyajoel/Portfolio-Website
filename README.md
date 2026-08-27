@@ -40,6 +40,12 @@ Microsoft AI103 capstone — full-stack home care platform with caregiver/admin 
 - Admin: James Smith · `ADM-003`
 - Caregiver: Sarah Connor · `EMP003`
 
+**Sample Uhie prompt (admin):**
+
+> Hi, client CLT0010 needs a carer on Friday, 28 August, from 10:30 AM to 12:30 PM. Please find and assign an available carer for this shift.
+
+Sign in as Admin `ADM-003` and paste this into Uhie to trigger find-available-caregiver and assign-shift tools.
+
 ### Architecture
 
 ![HomeCare Scheduler architecture](assets/homecare-scheduler-architecture.png)
