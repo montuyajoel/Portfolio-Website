@@ -1226,12 +1226,25 @@ section {
   border-radius: var(--radius-md);
   padding: 16px;
   transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
 .award-item:hover {
   background: rgba(0, 212, 170, 0.04);
   border-color: rgba(0, 212, 170, 0.2);
   transform: translateY(-2px);
+}
+
+.award-item-featured {
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(0, 120, 212, 0.06));
+  border-color: rgba(0, 212, 170, 0.28);
+  grid-column: 1 / -1;
+}
+
+.award-item-featured:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.12), rgba(0, 120, 212, 0.1));
+  border-color: rgba(0, 212, 170, 0.45);
 }
 
 .award-badge {
@@ -1251,6 +1264,11 @@ section {
   font-size: 0.8rem !important;
   color: var(--text-muted) !important;
   line-height: 1.4 !important;
+}
+
+.award-item-featured .award-info strong {
+  font-size: 0.98rem;
+  color: var(--accent-teal);
 }
 
 /* ===== Responsive ===== */
