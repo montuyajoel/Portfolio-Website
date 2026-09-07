@@ -1067,6 +1067,85 @@ section {
   grid-column: 1 / -1;
 }
 
+/* ===== Project header background media ===== */
+/* The proj-bg-* gradient stays as the fallback layer beneath the image. */
+.project-card-header.has-media::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrim keeps the label and hover button readable over the artwork. */
+.project-card-header.has-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 26, 0.62) 0%,
+    rgba(10, 14, 26, 0.24) 45%,
+    rgba(10, 14, 26, 0.78) 100%
+  );
+}
+
+.project-card:hover .project-card-header.has-media::before {
+  transform: scale(1.06);
+}
+
+.project-media-homecare::before {
+  background-image: url("assets/card-homecare.jpg");
+}
+.project-media-rag::before {
+  background-image: url("assets/card-rag-platform.jpg");
+}
+.project-media-scribeflow::before {
+  background-image: url("assets/card-scribeflow.jpg");
+}
+.project-media-weather::before {
+  background-image: url("assets/card-weather-agent.jpg");
+}
+.project-media-django::before {
+  background-image: url("assets/card-django-api.jpg");
+}
+.project-media-exercise::before {
+  background-image: url("assets/card-exercise-recognition.jpg");
+}
+.project-media-tourism::before {
+  background-image: url("assets/card-tourism-forecast.jpg");
+}
+.project-media-fishing::before {
+  background-image: url("assets/card-fishing-monitor.jpg");
+}
+.project-media-telco::before {
+  background-image: url("assets/card-telco-chatbot.jpg");
+}
+
+/* Taller header on the featured card so more of the artwork is visible. */
+.project-card-featured .project-card-header {
+  height: 220px;
+}
+
+@media (max-width: 640px) {
+  .project-card-featured .project-card-header {
+    height: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-header.has-media::before,
+  .project-card:hover .project-card-header.has-media::before {
+    transition: none;
+    transform: none;
+  }
+}
+
 .project-card-featured .project-card-body p {
   margin-bottom: 16px;
 }
