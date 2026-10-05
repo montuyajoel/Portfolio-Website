@@ -18,7 +18,7 @@
 
   --text-primary: #f0f4ff;
   --text-secondary: #8b9cc8;
-  --text-muted: #4a5578;
+  --text-muted: #7180a6; /* 4.9:1 on --bg-primary (was 2.6:1) */
 
   --border-color: rgba(255, 255, 255, 0.08);
   --border-accent: rgba(0, 212, 170, 0.3);
@@ -248,8 +248,9 @@ nav.scrolled {
 .hero-title {
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
   margin-bottom: 8px;
   animation: fadeInUp 0.7s ease 0.1s both;
 }
@@ -464,7 +465,7 @@ nav.scrolled {
   background-size: 100% 4px;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0;
 }
 
 .profile-img-wrapper img {
@@ -472,7 +473,7 @@ nav.scrolled {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: grayscale(100%) contrast(150%) brightness(90%);
+  filter: grayscale(100%) contrast(115%) brightness(100%);
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
   z-index: 1;
 }
@@ -480,7 +481,7 @@ nav.scrolled {
 /* Hover Interactive Reveal */
 .profile-ring:hover .profile-img-wrapper img {
   transform: scale(1.08) rotate(1deg);
-  filter: grayscale(85%) contrast(140%) brightness(100%);
+  filter: grayscale(70%) contrast(110%) brightness(104%);
 }
 
 .profile-ring:hover .profile-img-wrapper::after {
@@ -505,11 +506,11 @@ nav.scrolled {
   box-shadow: var(--shadow-card);
 }
 
-.floating-badge .badge-icon { font-size: 1.1rem; }
+.floating-badge .badge-icon { display: inline-flex; color: var(--accent-teal); }
 
-.badge-tl { top: 20px; left: -30px; animation: floatY 3s ease-in-out infinite; }
-.badge-br { bottom: 30px; right: -30px; animation: floatY 3s ease-in-out infinite 1.5s; }
-.badge-tr { top: 50%; right: -40px; animation: floatY 3s ease-in-out infinite 0.8s; }
+.badge-tl { top: 20px; left: -30px; }
+.badge-br { bottom: 30px; right: -48px; }
+.badge-tr { top: 46%; right: -64px; }
 
 @keyframes floatY {
   0%, 100% { transform: translateY(0); }
@@ -541,7 +542,9 @@ section {
 .section-title {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: -1px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
   color: var(--text-primary);
   margin-bottom: 16px;
 }
@@ -656,7 +659,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  flex-shrink: 0;
+  color: var(--accent-teal);
 }
 
 .about-card p {
@@ -749,7 +753,6 @@ section {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: var(--transition);
-  cursor: pointer;
   position: relative;
 }
 
@@ -1330,9 +1333,15 @@ section {
 }
 
 .award-badge {
-  font-size: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 212, 170, 0.1);
+  color: var(--accent-teal);
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .award-info strong {
@@ -1391,7 +1400,12 @@ section {
     border-radius: var(--radius-lg);
   }
 
-  .nav-links { display: none; }
+  .nav-links { gap: 4px; }
+  .nav-links a { padding: 7px 12px; font-size: 0.85rem; }
+  .nav-cta { padding: 7px 14px !important; }
+  .nav-hide-mobile { display: none; }
+  .nav-hide-mobile-inline { display: none; }
+  .nav-logo { font-size: 1.2rem; }
 
   .github-btn {
     display: inline-flex;
@@ -1476,4 +1490,148 @@ section {
   position: relative;
   z-index: 3;
 }
+}
+
+/* =========================================================
+   Refinement layer
+   Press feedback, touch/keyboard access, calmer motion.
+   ========================================================= */
+
+/* Secondary nav action: GitHub sits quieter than LinkedIn. */
+.nav-cta.nav-cta-ghost {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none;
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+}
+
+.nav-cta.nav-cta-ghost:hover {
+  border-color: var(--border-accent) !important;
+  background: rgba(0, 212, 170, 0.08) !important;
+}
+
+/* Feedback lives on the press, and it's instant. */
+.btn:active,
+.nav-cta:active,
+.tab-btn:active,
+.overlay-btn:active,
+.social-btn:active {
+  transform: scale(0.97);
+  transition: transform 100ms ease-out;
+}
+
+/* Visible keyboard focus everywhere. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 3px;
+}
+
+/* Project links appear for keyboard users, not only on hover. */
+.project-card:focus-within .overlay {
+  opacity: 1;
+}
+
+/* Touch screens have no hover: keep the project link visible,
+   anchored at the bottom of the artwork, and drop sticky hover lifts. */
+@media (hover: none) {
+  /* Extra .project-card raises specificity over the inline <style> in index.html. */
+  .project-card .project-card-header .overlay {
+    opacity: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 14px;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .project-card .project-card-header .overlay-btn {
+    padding: 9px 16px;
+    font-size: 0.8rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .project-card:hover,
+  .about-card:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+
+  .project-card:hover .project-card-header.has-media::before {
+    transform: none;
+  }
+}
+
+/* Pairing label + link in the header needs both to fit side by side on touch. */
+@media (hover: none) and (max-width: 640px) {
+  .project-card-header {
+    min-height: 150px;
+  }
+}
+
+/* Reduced motion: cross-fades instead of travel, nothing loops. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    transform: none;
+    transition: opacity 0.2s ease !important;
+  }
+
+  #particles-canvas,
+  .bg-orb {
+    display: none;
+  }
+
+  .hero-role .cursor {
+    display: none;
+  }
+}
+
+/* Reduced transparency: solid surfaces, no blur. */
+@media (prefers-reduced-transparency: reduce) {
+  nav,
+  nav.scrolled {
+    background: var(--bg-primary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .about-card,
+  .project-card,
+  .floating-badge,
+  .project-header-label {
+    background: var(--bg-secondary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Phones: keep all three tabs on one segmented row. */
+@media (max-width: 480px) {
+  .tabs-nav {
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 4px;
+    border-radius: var(--radius-full);
+  }
+
+  .tab-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 8px;
+    gap: 6px;
+    font-size: 0.85rem;
+  }
 }

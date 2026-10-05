@@ -2,8 +2,13 @@
    PORTFOLIO MAIN JAVASCRIPT
    =================================================== */
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canHover = window.matchMedia('(hover: hover)').matches;
+
 // ─── Particles Background ──────────────────────────────────────
 (function initParticles() {
+  // A full-viewport moving background is skipped for reduced-motion users.
+  if (prefersReducedMotion) return;
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
@@ -68,6 +73,11 @@
   }
 
   function animate() {
+    // Don't burn frames while the tab is in the background.
+    if (document.hidden) {
+      animFrame = requestAnimationFrame(animate);
+      return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     particles.forEach(p => { p.update(); p.draw(); });
     drawLines();
@@ -131,6 +141,10 @@
   ];
   const el = document.getElementById('typed-role');
   if (!el) return;
+  if (prefersReducedMotion) {
+    el.textContent = roles[0];
+    return;
+  }
 
   let roleIdx = 0;
   let charIdx = 0;
@@ -168,19 +182,27 @@
 
   function startCounting() {
     counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-count'));
-      const duration = 1800;
-      const step = target / (duration / 16);
-      let current = 0;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          counter.textContent = target + '+';
-          clearInterval(timer);
+      const raw = counter.getAttribute('data-count');
+      const target = parseFloat(raw);
+      const decimals = (raw.split('.')[1] || '').length; // "2.5" keeps one decimal
+      const final = target.toFixed(decimals) + '+';
+      if (prefersReducedMotion) {
+        counter.textContent = final;
+        return;
+      }
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out: fast start, gentle settle
+        if (t < 1) {
+          counter.textContent = (target * eased).toFixed(decimals);
+          requestAnimationFrame(tick);
         } else {
-          counter.textContent = Math.floor(current);
+          counter.textContent = final;
         }
-      }, 16);
+      }
+      requestAnimationFrame(tick);
     });
   }
 
@@ -225,6 +247,23 @@ function switchTab(tabName) {
   }
 }
 
+(function initTabKeys() {
+  const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('keydown', e => {
+      let next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      next.focus();
+      next.click();
+    });
+  });
+})();
+
 // ─── Skill Bar Animation ───────────────────────────────────────
 function animateSkillBars() {
   document.querySelectorAll('.skill-fill').forEach(bar => {
@@ -253,34 +292,13 @@ function animateSkillBars() {
 // ─── Mouse Parallax on Hero Visual ─────────────────────���──────
 (function initParallax() {
   const visual = document.querySelector('.hero-visual');
-  if (!visual) return;
+  if (!visual || prefersReducedMotion || !canHover) return;
 
   document.addEventListener('mousemove', e => {
     const { innerWidth, innerHeight } = window;
     const x = (e.clientX / innerWidth - 0.5) * 16;
     const y = (e.clientY / innerHeight - 0.5) * 16;
     visual.style.transform = `translate(${x}px, ${y}px)`;
-  });
-})();
-
-
-// ─── Project Card hover tilt effect ───────────────────────────
-(function initTilt() {
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
-      card.style.transform = `translateY(-6px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      card.style.perspective = '800px';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
   });
 })();
 
