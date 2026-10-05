@@ -134,10 +134,10 @@ const canHover = window.matchMedia('(hover: hover)').matches;
 // ─── Typing Animation ──────────────────────────────────────────
 (function initTyping() {
   const roles = [
-    'AI Engineering Analyst',
-    'MSc in Data Analytics Graduate',
-    'DevOps & Cloud Engineer',
-    'Full Stack Developer'
+    'Applied AI Engineer',
+    'Backend Engineer',
+    'Conversational AI, RAG & Agents',
+    'MSc in Data Analytics Graduate'
   ];
   const el = document.getElementById('typed-role');
   if (!el) return;
