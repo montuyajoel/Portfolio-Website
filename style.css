@@ -1126,6 +1126,9 @@ section {
 .project-media-telco::before {
   background-image: url("assets/card-telco-chatbot.jpg");
 }
+.project-media-invitation::before {
+  background-image: url("assets/card-birthday-invitation.jpg");
+}
 
 /* Taller header on the featured card so more of the artwork is visible. */
 .project-card-featured .project-card-header {
