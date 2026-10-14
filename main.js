@@ -334,6 +334,7 @@ if (canHover && !prefersReducedMotion) {
     }),
     { group: 'Actions', label: 'Copy email address', run: () => copyText('joelalbertmontuya@gmail.com') },
     { group: 'Actions', label: 'Send an email', run: () => { location.href = 'mailto:joelalbertmontuya@gmail.com'; } },
+    { group: 'Actions', label: 'Download CV', hint: 'PDF', run: open('/go/cv') },
     { group: 'Actions', label: 'Open GitHub', hint: '↗', run: open('/go/github') },
     { group: 'Actions', label: 'Open LinkedIn', hint: '↗', run: open('/go/linkedin') },
   ];
