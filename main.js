@@ -5,89 +5,19 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canHover = window.matchMedia('(hover: hover)').matches;
 
-// ─── Particles Background ──────────────────────────────────────
-(function initParticles() {
-  // A full-viewport moving background is skipped for reduced-motion users.
-  if (prefersReducedMotion) return;
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let animFrame;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  class Particle {
-    constructor() { this.reset(); }
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 1.5 + 0.3;
-      this.speedX = (Math.random() - 0.5) * 0.4;
-      this.speedY = (Math.random() - 0.5) * 0.4;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.color = Math.random() > 0.5 ? '0,212,170' : '124,58,237';
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-        this.reset();
-      }
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
-      ctx.fill();
-    }
-  }
-
-  // Draw connecting lines between nearby particles
-  function drawLines() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,212,170,${0.06 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function init() {
-    particles = [];
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 100);
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-  }
-
-  function animate() {
-    // Don't burn frames while the tab is in the background.
-    if (document.hidden) {
-      animFrame = requestAnimationFrame(animate);
-      return;
-    }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawLines();
-    animFrame = requestAnimationFrame(animate);
-  }
-
-  init();
-  animate();
-  window.addEventListener('resize', () => { resize(); init(); });
-})();
+// ─── Theme Toggle ──────────────────────────────────────────────
+// No saved choice = follow the system setting (handled in CSS).
+function toggleTheme() {
+  const root = document.documentElement;
+  const current = root.dataset.theme ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const next = current === 'light' ? 'dark' : 'light';
+  const apply = () => { root.dataset.theme = next; };
+  if (document.startViewTransition && !prefersReducedMotion) document.startViewTransition(apply);
+  else apply();
+  try { localStorage.setItem('theme', next); } catch (e) { /* private mode: still switches for this visit */ }
+}
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
 
 // ─── Navbar Scroll Effect ──────────────────────────────────────
@@ -334,6 +264,7 @@ if (canHover && !prefersReducedMotion) {
     }),
     { group: 'Actions', label: 'Copy email address', run: () => copyText('joelalbertmontuya@gmail.com') },
     { group: 'Actions', label: 'Send an email', run: () => { location.href = 'mailto:joelalbertmontuya@gmail.com'; } },
+    { group: 'Actions', label: 'Switch light / dark theme', run: toggleTheme },
     { group: 'Actions', label: 'Download CV', hint: 'PDF', run: open('/go/cv') },
     { group: 'Actions', label: 'Open GitHub', hint: '↗', run: open('/go/github') },
     { group: 'Actions', label: 'Open LinkedIn', hint: '↗', run: open('/go/linkedin') },
