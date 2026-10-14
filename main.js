@@ -219,59 +219,6 @@ const canHover = window.matchMedia('(hover: hover)').matches;
 })();
 
 
-// ─── Tab Switching ─────────────────────────────────────────────
-function switchTab(tabName) {
-  // Update buttons
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
-    btn.setAttribute('aria-selected', 'false');
-  });
-  const activeBtn = document.getElementById(`tab-${tabName}`);
-  if (activeBtn) {
-    activeBtn.classList.add('active');
-    activeBtn.setAttribute('aria-selected', 'true');
-  }
-
-  // Update panels
-  document.querySelectorAll('.tab-panel').forEach(panel => {
-    panel.classList.remove('active');
-  });
-  const activePanel = document.getElementById(`panel-${tabName}`);
-  if (activePanel) {
-    activePanel.classList.add('active');
-  }
-
-  // Animate skill bars when skills tab opens
-  if (tabName === 'skills') {
-    setTimeout(animateSkillBars, 100);
-  }
-}
-
-(function initTabKeys() {
-  const tabs = Array.from(document.querySelectorAll('.tab-btn'));
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('keydown', e => {
-      let next = null;
-      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
-      else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
-      else if (e.key === 'Home') next = tabs[0];
-      else if (e.key === 'End') next = tabs[tabs.length - 1];
-      if (!next) return;
-      e.preventDefault();
-      next.focus();
-      next.click();
-    });
-  });
-})();
-
-// ─── Skill Bar Animation ───────────────────────────────────────
-function animateSkillBars() {
-  document.querySelectorAll('.skill-fill').forEach(bar => {
-    const width = bar.getAttribute('data-width');
-    bar.style.width = width;
-  });
-}
-
 // ─── Scroll Reveal Animation ───────────────────────────────────
 (function initReveal() {
   const reveals = document.querySelectorAll('.reveal');
@@ -303,13 +250,167 @@ function animateSkillBars() {
 })();
 
 
-// ─── Skill bars animate on page load if already visible ────────
-window.addEventListener('load', () => {
-  // Tiny delay so CSS transitions are ready
-  setTimeout(() => {
-    const skillsPanel = document.getElementById('panel-skills');
-    if (skillsPanel && skillsPanel.classList.contains('active')) {
-      animateSkillBars();
-    }
-  }, 300);
+// ─── Toast ─────────────────────────────────────────────────────
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(
+    () => showToast('Copied ' + text),
+    () => showToast('Copy failed — ' + text)
+  );
+}
+
+document.querySelectorAll('[data-copy]').forEach(btn => {
+  btn.addEventListener('click', () => copyText(btn.dataset.copy));
 });
+
+
+// ─── Project Filters ───────────────────────────────────────────
+(function initFilters() {
+  const chips = document.querySelectorAll('.chip[data-filter]');
+  const cards = document.querySelectorAll('.project-card[data-cats]');
+  cards.forEach((card, i) => card.style.setProperty('--vt', `project-${i}`));
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      const apply = () => {
+        chips.forEach(c => {
+          c.classList.toggle('active', c === chip);
+          c.setAttribute('aria-pressed', c === chip);
+        });
+        cards.forEach(card => {
+          card.hidden = filter !== 'all' && !card.dataset.cats.split(' ').includes(filter);
+        });
+      };
+      // View Transitions animate the grid reflow natively where supported.
+      if (document.startViewTransition && !prefersReducedMotion) document.startViewTransition(apply);
+      else apply();
+    });
+  });
+})();
+
+
+// ─── Cursor Spotlight on Cards ─────────────────────────────────
+if (canHover && !prefersReducedMotion) {
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest('.project-card, .about-card, .skills-category, .award-item');
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  });
+}
+
+
+// ─── Quick-Search Palette (Ctrl/⌘+K or /) ──────────────────────
+(function initPalette() {
+  const dialog = document.getElementById('cmdk');
+  const input = document.getElementById('cmdk-input');
+  const list = document.getElementById('cmdk-list');
+  const goTo = id => () => document.getElementById(id).scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  const open = url => () => window.open(url, '_blank', 'noopener');
+
+  const items = [
+    { group: 'Sections', label: 'About', run: goTo('about') },
+    { group: 'Sections', label: 'Projects', run: goTo('projects') },
+    { group: 'Sections', label: 'Skills', run: goTo('skills') },
+    { group: 'Sections', label: 'Contact', run: goTo('contact') },
+    // Every project card becomes an entry: open its live link / repo, else scroll to it.
+    ...Array.from(document.querySelectorAll('.project-card')).map(card => {
+      const link = card.querySelector('a.overlay-btn');
+      return {
+        group: 'Projects',
+        label: card.querySelector('h3').textContent.trim(),
+        hint: link ? link.textContent.trim() : '',
+        run: link ? open(link.href) : () => card.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+      };
+    }),
+    { group: 'Actions', label: 'Copy email address', run: () => copyText('joelalbertmontuya@gmail.com') },
+    { group: 'Actions', label: 'Send an email', run: () => { location.href = 'mailto:joelalbertmontuya@gmail.com'; } },
+    { group: 'Actions', label: 'Open GitHub', hint: '↗', run: open('/go/github') },
+    { group: 'Actions', label: 'Open LinkedIn', hint: '↗', run: open('/go/linkedin') },
+  ];
+
+  let shown = [];
+  let active = 0;
+
+  function render() {
+    const q = input.value.trim().toLowerCase();
+    shown = items.filter(i => i.label.toLowerCase().includes(q) || i.group.toLowerCase().includes(q));
+    active = Math.min(active, Math.max(shown.length - 1, 0));
+    list.innerHTML = '';
+    let group = '';
+    shown.forEach((item, i) => {
+      if (item.group !== group) {
+        group = item.group;
+        const h = document.createElement('li');
+        h.className = 'cmdk-group';
+        h.setAttribute('role', 'presentation');
+        h.textContent = group;
+        list.append(h);
+      }
+      const li = document.createElement('li');
+      li.id = `cmdk-${i}`;
+      li.className = 'cmdk-item';
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', i === active);
+      li.innerHTML = `<span></span><small></small>`;
+      li.firstChild.textContent = item.label;
+      li.lastChild.textContent = item.hint || '';
+      li.addEventListener('pointermove', () => setActive(i));
+      li.addEventListener('click', () => choose(i));
+      list.append(li);
+    });
+    if (!shown.length) list.innerHTML = '<li class="cmdk-empty">No matches</li>';
+    input.setAttribute('aria-activedescendant', shown.length ? `cmdk-${active}` : '');
+  }
+
+  function setActive(i) {
+    if (i === active) return;
+    list.querySelector(`#cmdk-${active}`)?.setAttribute('aria-selected', 'false');
+    active = i;
+    const el = list.querySelector(`#cmdk-${active}`);
+    el?.setAttribute('aria-selected', 'true');
+    el?.scrollIntoView({ block: 'nearest' });
+    input.setAttribute('aria-activedescendant', `cmdk-${active}`);
+  }
+
+  function choose(i) {
+    const item = shown[i];
+    if (!item) return;
+    dialog.close();
+    item.run();
+  }
+
+  function show() {
+    input.value = '';
+    active = 0;
+    render();
+    dialog.showModal();
+    input.focus();
+  }
+
+  input.addEventListener('input', () => { active = 0; render(); });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive((active + 1) % shown.length); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((active - 1 + shown.length) % shown.length); }
+    else if (e.key === 'Enter') { e.preventDefault(); choose(active); }
+  });
+  // Click on the backdrop (the dialog element itself, outside the box) closes it.
+  dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+  document.getElementById('cmdk-open').addEventListener('click', show);
+  document.addEventListener('keydown', e => {
+    const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) {
+      e.preventDefault();
+      dialog.open ? dialog.close() : show();
+    }
+  });
+})();

@@ -121,11 +121,16 @@
     <div class="container nav-inner">
       <a href="#home" class="nav-logo">&lt;JAM /&gt;</a>
       <ul class="nav-links">
-        <li class="nav-hide-mobile"><a href="#home" class="active" id="nav-home">Home</a></li>
-        <li><a href="#portfolio" id="nav-portfolio">Portfolio</a></li>
+        <li class="nav-hide-mobile"><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li class="nav-hide-mobile"><a href="#skills">Skills</a></li>
         <li><a href="#contact" id="nav-contact">Contact</a></li>
+        <li><button type="button" class="nav-search" id="cmdk-open" aria-label="Quick search (Ctrl+K)" title="Quick search (Ctrl+K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <kbd class="nav-hide-mobile-inline">⌘K</kbd>
+        </button></li>
         <li class="nav-hide-mobile"><a href="/go/github" class="nav-cta nav-cta-ghost" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
-        <li><a href="/go/linkedin" class="nav-cta" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-hide-mobile-inline"> Profile</span> ↗</a></li>
+        <li class="nav-hide-mobile"><a href="/go/linkedin" class="nav-cta" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-hide-mobile-inline"> Profile</span> ↗</a></li>
       </ul>
     </div>
   </nav>
@@ -150,8 +155,8 @@
             Applied AI and Backend Engineer with 2.5 years at Accenture building enterprise conversational AI across 13 live use cases. I now build Python and FastAPI services, RAG systems and LangGraph agents, deployed with Docker, Kubernetes and CI/CD.
           </p>
           <div class="hero-actions">
-            <a href="#portfolio" class="btn btn-primary">
-              Explore Portfolio
+            <a href="#projects" class="btn btn-primary">
+              View Projects
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#contact" class="btn btn-secondary">
@@ -195,206 +200,206 @@
     </div>
   </section>
 
-  <!-- ===== PORTFOLIO SECTION (Tabbed) ===== -->
-  <section id="portfolio">
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
     <div class="container">
       <div class="section-header reveal">
-        <p class="section-tag">Overview</p>
-        <h2 class="section-title">My <span>Portfolio</span></h2>
-        <p class="section-subtitle">Discover my background, my selected projects, and the technical skillsets I bring to the table.</p>
+        <p class="section-tag">01 · About</p>
+        <h2 class="section-title">Background &amp; <span>Experience</span></h2>
+        <p class="section-subtitle">Commercial AI engineering at Accenture, then an MSc and DevOps diploma in Dublin.</p>
       </div>
-
-      <!-- Tabs Navigation -->
-      <div class="tabs-wrapper reveal">
-        <div class="tabs-nav" role="tablist">
-          <button class="tab-btn active" id="tab-about" role="tab" aria-controls="panel-about" aria-selected="true" onclick="switchTab('about')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            About Me
-          </button>
-          <button class="tab-btn" id="tab-projects" role="tab" aria-controls="panel-projects" aria-selected="false" onclick="switchTab('projects')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            Projects
-          </button>
-          <button class="tab-btn" id="tab-skills" role="tab" aria-controls="panel-skills" aria-selected="false" onclick="switchTab('skills')">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            Skills
-          </button>
-        </div>
-
-        <!-- ===== ABOUT ME PANEL ===== -->
-        <div class="tab-panel active" id="panel-about" role="tabpanel">
-          <div class="about-grid">
-            <!-- Who I Am -->
-            <div class="about-card">
-              <h3>
-                <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
-                Who I Am
-              </h3>
-              <p>
-                I'm an Applied AI and Backend Engineer based in Dublin, Ireland. I bring 2.5 years of commercial experience in enterprise conversational AI at Accenture, plus recent hands-on work in Python, FastAPI, RAG, agentic AI and cloud infrastructure. My focus is where AI meets production software: APIs, integrations, deployment and support.
-              </p>
-              <br />
-              <div class="info-grid">
-                <div class="info-item">
-                  <span class="info-label">Location</span>
-                  <span class="info-value">Dun Laoghaire, Dublin 🇮🇪</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Availability</span>
-                  <span class="info-value" style="color:var(--accent-teal)">✅ Open to Opportunities</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Work Authorization</span>
-                  <span class="info-value">Stamp 1G</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Preferred Role</span>
-                  <span class="info-value">Applied AI / Backend Engineering</span>
-                </div>
-              </div>
+      <div class="about-grid">
+        <!-- Who I Am -->
+        <div class="about-card">
+          <h3>
+            <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+            Who I Am
+          </h3>
+          <p>
+            I'm an Applied AI and Backend Engineer based in Dublin, Ireland. I bring 2.5 years of commercial experience in enterprise conversational AI at Accenture, plus recent hands-on work in Python, FastAPI, RAG, agentic AI and cloud infrastructure. My focus is where AI meets production software: APIs, integrations, deployment and support.
+          </p>
+          <br />
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value">Dun Laoghaire, Dublin 🇮🇪</span>
             </div>
-
-            <!-- Experience & Education -->
-            <div class="about-card">
-              <h3>
-                <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-                Experience &amp; Education
-              </h3>
-              <ul class="experience-list">
-                <li class="experience-item">
-                  <div class="exp-dot"></div>
-                  <div class="exp-content">
-                    <div class="exp-title">MSc in Data Analytics</div>
-                    <div class="exp-company">CCT College Dublin</div>
-                    <div class="exp-period">Feb 2025 – Jun 2026 · 2:1 Honours</div>
-                  </div>
-                </li>
-                <li class="experience-item">
-                  <div class="exp-dot"></div>
-                  <div class="exp-content">
-                    <div class="exp-title">Diploma in DevOps (Distinction)</div>
-                    <div class="exp-company">CCT College Dublin</div>
-                    <div class="exp-period">June 2025</div>
-                  </div>
-                </li>
-                <li class="experience-item">
-                  <div class="exp-dot"></div>
-                  <div class="exp-content">
-                    <div class="exp-title">AI Engineering Analyst</div>
-                    <div class="exp-company">Accenture, Inc. — Philippines</div>
-                    <div class="exp-period">Jun 2022 – Aug 2023</div>
-                  </div>
-                </li>
-                <li class="experience-item">
-                  <div class="exp-dot"></div>
-                  <div class="exp-content">
-                    <div class="exp-title">AI Engineering Associate</div>
-                    <div class="exp-company">Accenture, Inc. — Philippines</div>
-                    <div class="exp-period">Feb 2021 – Jun 2022</div>
-                  </div>
-                </li>
-                <li class="experience-item">
-                  <div class="exp-dot"></div>
-                  <div class="exp-content">
-                    <div class="exp-title">B.S. Computer Engineering</div>
-                    <div class="exp-company">University of St. La Salle</div>
-                    <div class="exp-period">Class of 2019</div>
-                  </div>
-                </li>
-              </ul>
+            <div class="info-item">
+              <span class="info-label">Availability</span>
+              <span class="info-value" style="color:var(--accent-teal)">✅ Open to Opportunities</span>
             </div>
-
-            <!-- My Story -->
-            <div class="about-card full-width">
-              <h3>
-                <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
-                My Story
-              </h3>
-              <p>
-                I started in Computer Engineering, working with embedded systems and microcontrollers, curious about how software, hardware and systems fit together. That led me into backend engineering and applied AI at Accenture Philippines, where I was promoted from Associate to Analyst in about a year while building API integrations, security-verification workflows and production support for live enterprise chatbots. In Dublin I added an MSc in Data Analytics and a Diploma in DevOps, then put them to work on a flexible RAG platform, a local Whisper speech-to-text app and LangGraph agents. I'm now looking for Applied AI and Backend Engineering roles that combine production software engineering, AI integration and scalable infrastructure.
-              </p>
+            <div class="info-item">
+              <span class="info-label">Work Authorization</span>
+              <span class="info-value">Stamp 1G</span>
             </div>
-
-            <!-- Highlights & Awards -->
-            <div class="about-card full-width">
-              <h3>
-                <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
-                Highlights &amp; Awards
-              </h3>
-              <div class="awards-grid">
-                <a class="award-item award-item-featured"
-                   href="https://learn.microsoft.com/en-gb/users/joelalbertmontuya-4387/credentials/4c4c02077d4b2002"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                  <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
-                  <div class="award-info">
-                    <strong>Microsoft Certified: Azure AI Apps and Agents Developer Associate</strong>
-                    <p>Microsoft Learn credential (AI-103) · Awarded September 2026 · Verify on Microsoft Learn</p>
-                  </div>
-                </a>
-                <div class="award-item">
-                  <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-                  <div class="award-info">
-                    <strong>FY22 Q1 Gantimpala Awardee - Agila</strong>
-                    <p>“Execute with Agility” Award, Accenture (March 2022)</p>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-                  <div class="award-info">
-                    <strong>Fast-Track Promotion</strong>
-                    <p>Promoted from AI Associate to AI Engineering Analyst at Accenture in ~1 year.</p>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-                  <div class="award-info">
-                    <strong>13 Live Use Cases Supported</strong>
-                    <p>Supported live production chatbot use cases, query analysis, and dashboard generation using Azure KQL.</p>
-                  </div>
-                </div>
-                <div class="award-item">
-                  <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
-                  <div class="award-info">
-                    <strong>Java Spring Boot Backend Assessment</strong>
-                    <p>Passed the Java Spring Boot backend assessment following Accenture bench training in ML, RPA, chatbot development, and OpenCV.</p>
-                  </div>
-                </div>
-              </div>
+            <div class="info-item">
+              <span class="info-label">Preferred Role</span>
+              <span class="info-value">Applied AI / Backend Engineering</span>
             </div>
           </div>
         </div>
 
-        <!-- ===== PROJECTS PANEL ===== -->
-        <div class="tab-panel" id="panel-projects" role="tabpanel">
-          <div class="projects-grid">
-
-            <!-- Project Highlight: HomeCare Scheduler -->
-            <div class="project-card project-card-featured">
-              <div class="project-card-header proj-bg-5 has-media project-media-homecare">
-                <div class="project-header-label">Full-Stack / Healthcare AI</div>
-                <div class="overlay">
-                  <a href="https://home-care-website-react.vercel.app"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View Live Demo ↗
-                  </a>
-                </div>
+        <!-- Experience & Education -->
+        <div class="about-card">
+          <h3>
+            <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+            Experience &amp; Education
+          </h3>
+          <ul class="experience-list">
+            <li class="experience-item">
+              <div class="exp-dot"></div>
+              <div class="exp-content">
+                <div class="exp-title">MSc in Data Analytics</div>
+                <div class="exp-company">CCT College Dublin</div>
+                <div class="exp-period">Feb 2025 – Jun 2026 · 2:1 Honours</div>
               </div>
-              <div class="project-card-body">
-                <h3>HomeCare Scheduler — United Healthcare IE</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  React + Node.js / MongoDB / Microsoft Foundry — Deployed on Vercel
-                </p>
-                <p>
-                  End-to-end home care operations platform with separate caregiver and admin portals,
-                  GPS-verified visit tracking, intelligent schedule assignment, leave workflows, and
-                  Uhie — a Microsoft Foundry AI assistant powered by RAG over HR/care knowledge and
-                  OpenAPI tool calling for live scheduling actions.
-                </p>
+            </li>
+            <li class="experience-item">
+              <div class="exp-dot"></div>
+              <div class="exp-content">
+                <div class="exp-title">Diploma in DevOps (Distinction)</div>
+                <div class="exp-company">CCT College Dublin</div>
+                <div class="exp-period">June 2025</div>
+              </div>
+            </li>
+            <li class="experience-item">
+              <div class="exp-dot"></div>
+              <div class="exp-content">
+                <div class="exp-title">AI Engineering Analyst</div>
+                <div class="exp-company">Accenture, Inc. — Philippines</div>
+                <div class="exp-period">Jun 2022 – Aug 2023</div>
+              </div>
+            </li>
+            <li class="experience-item">
+              <div class="exp-dot"></div>
+              <div class="exp-content">
+                <div class="exp-title">AI Engineering Associate</div>
+                <div class="exp-company">Accenture, Inc. — Philippines</div>
+                <div class="exp-period">Feb 2021 – Jun 2022</div>
+              </div>
+            </li>
+            <li class="experience-item">
+              <div class="exp-dot"></div>
+              <div class="exp-content">
+                <div class="exp-title">B.S. Computer Engineering</div>
+                <div class="exp-company">University of St. La Salle</div>
+                <div class="exp-period">Class of 2019</div>
+              </div>
+            </li>
+          </ul>
+        </div>
 
+        <!-- My Story -->
+        <div class="about-card full-width">
+          <h3>
+            <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            My Story
+          </h3>
+          <p>
+            I started in Computer Engineering, working with embedded systems and microcontrollers, curious about how software, hardware and systems fit together. That led me into backend engineering and applied AI at Accenture Philippines, where I was promoted from Associate to Analyst in about a year while building API integrations, security-verification workflows and production support for live enterprise chatbots. In Dublin I added an MSc in Data Analytics and a Diploma in DevOps, then put them to work on a flexible RAG platform, a local Whisper speech-to-text app and LangGraph agents. I'm now looking for Applied AI and Backend Engineering roles that combine production software engineering, AI integration and scalable infrastructure.
+          </p>
+        </div>
+
+        <!-- Highlights & Awards -->
+        <div class="about-card full-width">
+          <h3>
+            <span class="card-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
+            Highlights &amp; Awards
+          </h3>
+          <div class="awards-grid">
+            <a class="award-item award-item-featured"
+               href="https://learn.microsoft.com/en-gb/users/joelalbertmontuya-4387/credentials/4c4c02077d4b2002"
+               target="_blank"
+               rel="noopener noreferrer">
+              <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+              <div class="award-info">
+                <strong>Microsoft Certified: Azure AI Apps and Agents Developer Associate</strong>
+                <p>Microsoft Learn credential (AI-103) · Awarded September 2026 · Verify on Microsoft Learn</p>
+              </div>
+            </a>
+            <div class="award-item">
+              <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+              <div class="award-info">
+                <strong>FY22 Q1 Gantimpala Awardee - Agila</strong>
+                <p>“Execute with Agility” Award, Accenture (March 2022)</p>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+              <div class="award-info">
+                <strong>Fast-Track Promotion</strong>
+                <p>Promoted from AI Associate to AI Engineering Analyst at Accenture in ~1 year.</p>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+              <div class="award-info">
+                <strong>13 Live Use Cases Supported</strong>
+                <p>Supported live production chatbot use cases, query analysis, and dashboard generation using Azure KQL.</p>
+              </div>
+            </div>
+            <div class="award-item">
+              <span class="award-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              <div class="award-info">
+                <strong>Java Spring Boot Backend Assessment</strong>
+                <p>Passed the Java Spring Boot backend assessment following Accenture bench training in ML, RPA, chatbot development, and OpenCV.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">02 · Work</p>
+        <h2 class="section-title">Selected <span>Projects</span></h2>
+        <p class="section-subtitle">Production work, MSc research and personal builds. Filter by area.</p>
+      </div>
+      <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+        <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="ai" aria-pressed="false">AI</button>
+        <button class="chip" data-filter="fullstack" aria-pressed="false">Full-Stack</button>
+        <button class="chip" data-filter="backend" aria-pressed="false">Backend &amp; DevOps</button>
+        <button class="chip" data-filter="data" aria-pressed="false">Data &amp; ML</button>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project Highlight: HomeCare Scheduler -->
+        <div class="project-card project-card-featured" data-cats="ai fullstack">
+          <div class="project-card-header proj-bg-5 has-media project-media-homecare">
+            <div class="project-header-label">Full-Stack / Healthcare AI</div>
+            <div class="overlay">
+              <a href="https://home-care-website-react.vercel.app"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View Live Demo ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>HomeCare Scheduler — United Healthcare IE</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              React + Node.js / MongoDB / Microsoft Foundry — Deployed on Vercel
+            </p>
+            <p>
+              End-to-end home care operations platform with separate caregiver and admin portals,
+              GPS-verified visit tracking, intelligent schedule assignment, leave workflows, and
+              Uhie — a Microsoft Foundry AI assistant powered by RAG over HR/care knowledge and
+              OpenAPI tool calling for live scheduling actions.
+            </p>
+
+            <details class="case-study">
+              <summary>
+                <span>View case study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="case-study-body">
                 <div class="project-capabilities">
                   <div class="project-capability">
                     <h4>Caregiver Portal</h4>
@@ -453,442 +458,449 @@
                   Authentication security is intentionally lowered for testing purposes.
                   Sample accounts — Admin: James Smith (<code>ADM-003</code>) · Caregiver: Sarah Connor (<code>EMP003</code>).
                 </div>
-
-                <div class="tech-tags" style="margin-top:16px;">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">Vite</span>
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">Express</span>
-                  <span class="tech-tag">MongoDB</span>
-                  <span class="tech-tag">Microsoft Foundry</span>
-                  <span class="tech-tag">Azure AI Search</span>
-                  <span class="tech-tag">RAG</span>
-                  <span class="tech-tag">OpenAPI Tools</span>
-                  <span class="tech-tag">JWT</span>
-                  <span class="tech-tag">Vercel</span>
-                  <span class="tech-tag">Supabase</span>
-                </div>
               </div>
+            </details>
+
+            <div class="tech-tags" style="margin-top:16px;">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Vite</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Microsoft Foundry</span>
+              <span class="tech-tag">Azure AI Search</span>
+              <span class="tech-tag">RAG</span>
+              <span class="tech-tag">OpenAPI Tools</span>
+              <span class="tech-tag">JWT</span>
+              <span class="tech-tag">Vercel</span>
+              <span class="tech-tag">Supabase</span>
             </div>
-
-            <!-- Project: Interactive Birthday Invitation -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-6 has-media project-media-invitation">
-                <div class="project-header-label">Full-Stack / Web App</div>
-                <div class="overlay">
-                  <a href="https://mallows-16th-birthday.vercel.app/"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View Live Site ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Interactive Birthday Invitation</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  React + TypeScript / Supabase — Deployed on Vercel
-                </p>
-                <p>
-                  Built an interactive surprise 16th-birthday invitation for my niece: an animated
-                  envelope that opens to reveal the card, a live countdown with add-to-calendar
-                  links, validated guest registration, a photo gallery with uploads and a lightbox,
-                  and an embedded map. Hosts get a password-protected guest list checked by a
-                  database function, and can email invitations with calendar attachments through
-                  a Vercel serverless function.
-                  <a href="https://github.com/montuyajoel/InteractiveBirthdayInvitation"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     style="color:var(--accent-teal);">Source on GitHub ↗</a>
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">TypeScript</span>
-                  <span class="tech-tag">Tailwind</span>
-                  <span class="tech-tag">shadcn/ui</span>
-                  <span class="tech-tag">Supabase</span>
-                  <span class="tech-tag">Vercel Functions</span>
-                  <span class="tech-tag">Nodemailer</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 1: Flexible RAG Platform -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-1 has-media project-media-rag">
-                <div class="project-header-label">RAG / Cloud AI</div>
-                <div class="overlay">
-                  <a href="https://github.com/montuyajoel/Flexible_RAG_Platform"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View on GitHub ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Flexible RAG Platform</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Flexible RAG Platform / GKE
-                </p>
-                <p>
-                  Built a cloud-deployed, production-oriented Retrieval-Augmented Generation pipeline using FastAPI,
-                  ChromaDB and Ollama. The service is deployed without bundled source data and supports runtime
-                  document ingestion, vector indexing, retrieval, persistent storage, Docker containerization,
-                  GitHub Actions CI/CD, and Kubernetes deployment on GKE.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">FastAPI</span>
-                  <span class="tech-tag">RAG</span>
-                  <span class="tech-tag">ChromaDB</span>
-                  <span class="tech-tag">Ollama</span>
-                  <span class="tech-tag">Docker</span>
-                  <span class="tech-tag">Kubernetes / GKE</span>
-                  <span class="tech-tag">GitHub Actions</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 2: ScribeFlow -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-2 has-media project-media-scribeflow">
-                <div class="project-header-label">Speech AI</div>
-                <div class="overlay">
-                  <a href="https://github.com/montuyajoel/ScribeFlow-speech-to-text"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View on GitHub ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>ScribeFlow — Local Speech-to-Text &amp; AI Study Assistant</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Speech AI / Python / Flask
-                </p>
-                <p>
-                  Built a privacy-focused speech-to-text application using Python, Flask,
-                  faster-whisper and CTranslate2 for local Whisper inference. Implemented
-                  streamed segment-level transcription with timestamps, model caching,
-                  VAD filtering, synchronized audio playback, transcript search and
-                  TXT/SRT/VTT exports, with optional streamed AI study-note generation
-                  through Ollama or OpenAI.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">Python</span>
-                  <span class="tech-tag">Flask</span>
-                  <span class="tech-tag">faster-whisper</span>
-                  <span class="tech-tag">CTranslate2</span>
-                  <span class="tech-tag">SSE</span>
-                  <span class="tech-tag">Ollama</span>
-                  <span class="tech-tag">OpenAI</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 3: LangChain Weather Agent -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-2 has-media project-media-weather">
-                <div class="project-header-label">Agentic AI</div>
-                <div class="overlay">
-                  <a href="https://github.com/montuyajoel/LangChain-Weather-Agent"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View on GitHub ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>LangChain Weather Agent</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Agentic AI / FastAPI
-                </p>
-                <p>
-                  Developed a conversational weather agent using FastAPI, LangGraph,
-                  LangChain and Open-Meteo with session memory, tool-based retrieval,
-                  OpenAI/Ollama support, automated tests and pull-request validation.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">Python</span>
-                  <span class="tech-tag">LangGraph</span>
-                  <span class="tech-tag">FastAPI</span>
-                  <span class="tech-tag">Pytest</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 4: Books Catalog API -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-3 has-media project-media-django">
-                <div class="project-header-label">Backend / DevOps</div>
-                <div class="overlay">
-                  <a href="https://github.com/montuyajoel/DevOps-Books-Catalog-API"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View on GitHub ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Django Books Catalog REST API</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Backend / DevOps
-                </p>
-                <p>
-                  Built a RESTful catalog backend with Django and PostgreSQL, automated
-                  testing and GitHub Actions, Docker containerization, and Kubernetes
-                  deployment using Helm for application configuration and service management.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">Django</span>
-                  <span class="tech-tag">PostgreSQL</span>
-                  <span class="tech-tag">Docker</span>
-                  <span class="tech-tag">Helm</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 5: MSc Capstone -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-4 has-media project-media-exercise">
-                <div class="project-header-label">Deep Learning</div>
-                <div class="overlay">
-                  <span class="overlay-btn primary"
-                        aria-disabled="true"
-                        title="No public GitHub repository is currently available"
-                        style="text-decoration:none;cursor:default;">
-                    MSc Capstone
-                  </span>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Fine-Grained Gym Exercise Recognition</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  MSc Data Analytics Capstone
-                </p>
-                <p>
-                  Compared CNN, LSTM, GRU, CNN-BiLSTM and CNN-ResBiGRU architectures
-                  using wearable accelerometer and gyroscope data. Achieved 97.05% test
-                  accuracy with CNN-BiLSTM and 96.72% F1-score with CNN-ResBiGRU.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">TensorFlow</span>
-                  <span class="tech-tag">Deep Learning</span>
-                  <span class="tech-tag">Time Series</span>
-                  <span class="tech-tag">Wearable Sensors</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 6: Tourism Revenue Forecasting -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-2 has-media project-media-tourism">
-                <div class="project-header-label">Machine Learning</div>
-                <div class="overlay">
-                  <a href="https://github.com/montuyajoel/IRL-Tourism-Revenue-Forecasting"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     class="overlay-btn primary"
-                     style="text-decoration:none">
-                    View on GitHub ↗
-                  </a>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Irish Tourism Revenue Forecasting</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Machine Learning / Forecasting
-                </p>
-                <p>
-                  Applied machine-learning and ensemble methods with GridSearchCV to model
-                  Irish tourism revenue using historical datasets and a CRISP-DM workflow,
-                  combining predictive modelling with structured data analysis.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">Python</span>
-                  <span class="tech-tag">Scikit-Learn</span>
-                  <span class="tech-tag">GridSearchCV</span>
-                  <span class="tech-tag">CRISP-DM</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 7: Fishing Boundary Monitoring -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-3 has-media project-media-fishing">
-                <div class="project-header-label">Embedded / IoT</div>
-                <div class="overlay">
-                  <span class="overlay-btn primary"
-                        aria-disabled="true"
-                        title="No public GitHub repository is currently available"
-                        style="text-decoration:none;cursor:default;">
-                    Engineering Project
-                  </span>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Fishing Boundary Monitoring System</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Embedded / IoT System
-                </p>
-                <p>
-                  Designed an IoT hardware and software solution for tracking vessel
-                  positions using PIC microcontrollers, with a C# .NET administration
-                  application, Google Maps integration, boundary alerts and MSSQL logging.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">C / C++</span>
-                  <span class="tech-tag">C# .NET</span>
-                  <span class="tech-tag">Google Maps API</span>
-                  <span class="tech-tag">MSSQL</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 9: Accenture Telco Chatbot -->
-            <div class="project-card">
-              <div class="project-card-header proj-bg-4 has-media project-media-telco">
-                <div class="project-header-label">Enterprise AI</div>
-                <div class="overlay">
-                  <span class="overlay-btn primary"
-                        aria-disabled="true"
-                        title="Commercial enterprise project — source code is not public"
-                        style="text-decoration:none;cursor:default;">
-                    Enterprise Project
-                  </span>
-                </div>
-              </div>
-              <div class="project-card-body">
-                <h3>Telco Chatbot — Conversational AI</h3>
-                <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
-                  Accenture — Enterprise Deployment
-                </p>
-                <p>
-                  Developed Node.js backend functionality, security-verification workflows,
-                  API integrations and custom customer journeys across 13 live conversational-AI
-                  use cases, with production support and telemetry analysis using Azure KQL.
-                </p>
-                <div class="tech-tags">
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">REST APIs</span>
-                  <span class="tech-tag">Azure KQL</span>
-                  <span class="tech-tag">Production Support</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
-        <!-- ===== SKILLS PANEL ===== -->
-        <div class="tab-panel" id="panel-skills" role="tabpanel">
-          <div class="skills-layout">
-
-            <div class="skills-category">
-              <h3>Applied AI &amp; Machine Learning</h3>
-              <p style="margin-bottom:18px;color:var(--text-secondary);">
-                Commercial conversational-AI experience combined with recent hands-on work in RAG, agentic systems,
-                deep learning, and LLM integration.
-              </p>
-              <div class="tech-tags" style="gap:10px;">
-                <span class="tech-tag">Conversational AI</span>
-                <span class="tech-tag">Speech AI / Whisper</span>
-                <span class="tech-tag">RAG</span>
-                <span class="tech-tag">Microsoft Foundry</span>
-                <span class="tech-tag">Azure AI Search</span>
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">LangGraph</span>
-                <span class="tech-tag">OpenAI / Ollama</span>
-                <span class="tech-tag">NLP</span>
-                <span class="tech-tag">Machine Learning</span>
-                <span class="tech-tag">Deep Learning</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">OpenCV</span>
-              </div>
+        <!-- Project: Interactive Birthday Invitation -->
+        <div class="project-card" data-cats="fullstack">
+          <div class="project-card-header proj-bg-6 has-media project-media-invitation">
+            <div class="project-header-label">Full-Stack / Web App</div>
+            <div class="overlay">
+              <a href="https://mallows-16th-birthday.vercel.app/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View Live Site ↗
+              </a>
             </div>
-
-            <div class="skills-category">
-              <h3>Backend Engineering</h3>
-              <p style="margin-bottom:18px;color:var(--text-secondary);">
-                API development and integration experience spanning enterprise conversational-AI systems and recent Python/Node.js projects.
-              </p>
-              <div class="tech-tags" style="gap:10px;">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">FastAPI</span>
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">Django</span>
-                <span class="tech-tag">REST APIs</span>
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">JWT</span>
-                <span class="tech-tag">SQL</span>
-                <span class="tech-tag">KQL</span>
-              </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Interactive Birthday Invitation</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              React + TypeScript / Supabase — Deployed on Vercel
+            </p>
+            <p>
+              Built an interactive surprise 16th-birthday invitation for my niece: an animated
+              envelope that opens to reveal the card, a live countdown with add-to-calendar
+              links, validated guest registration, a photo gallery with uploads and a lightbox,
+              and an embedded map. Hosts get a password-protected guest list checked by a
+              database function, and can email invitations with calendar attachments through
+              a Vercel serverless function.
+              <a href="https://github.com/montuyajoel/InteractiveBirthdayInvitation"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 style="color:var(--accent-teal);">Source on GitHub ↗</a>
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Tailwind</span>
+              <span class="tech-tag">shadcn/ui</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">Vercel Functions</span>
+              <span class="tech-tag">Nodemailer</span>
             </div>
-
-            <div class="skills-category">
-              <h3>Cloud, DevOps &amp; Infrastructure</h3>
-              <p style="margin-bottom:18px;color:var(--text-secondary);">
-                Cloud and delivery tooling demonstrated through Azure production support and recent containerized deployments on GKE.
-              </p>
-              <div class="tech-tags" style="gap:10px;">
-                <span class="tech-tag">Azure</span>
-                <span class="tech-tag">Vercel</span>
-                <span class="tech-tag">Google Cloud / GKE</span>
-                <span class="tech-tag">Docker</span>
-                <span class="tech-tag">Kubernetes</span>
-                <span class="tech-tag">Helm</span>
-                <span class="tech-tag">GitHub Actions</span>
-                <span class="tech-tag">CI/CD</span>
-                <span class="tech-tag">Git</span>
-                <span class="tech-tag">GitHub</span>
-              </div>
-            </div>
-
-            <div class="skills-category">
-              <h3>Data &amp; Storage</h3>
-              <p style="margin-bottom:18px;color:var(--text-secondary);">
-                Data processing, analytics, relational/document storage, vector retrieval, and telemetry analysis.
-              </p>
-              <div class="tech-tags" style="gap:10px;">
-                <span class="tech-tag">PostgreSQL</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Supabase</span>
-                <span class="tech-tag">ChromaDB</span>
-                <span class="tech-tag">Pandas</span>
-                <span class="tech-tag">NumPy</span>
-                <span class="tech-tag">Scikit-Learn</span>
-                <span class="tech-tag">Spark</span>
-                <span class="tech-tag">Hadoop</span>
-              </div>
-            </div>
-
-            <div class="skills-category">
-              <h3>AI-Assisted Development</h3>
-              <p style="margin-bottom:18px;color:var(--text-secondary);">
-                This portfolio site was built with AI-assisted workflows — using coding agents and LLM tools
-                to accelerate design, implementation, and iteration.
-              </p>
-              <div class="tech-tags" style="gap:10px;">
-                <span class="tech-tag">Cursor</span>
-                <span class="tech-tag">Antigravity</span>
-                <span class="tech-tag">Codex</span>
-                <span class="tech-tag">AI-Assisted Coding</span>
-              </div>
-            </div>
-
           </div>
         </div>
+
+        <!-- Project 1: Flexible RAG Platform -->
+        <div class="project-card" data-cats="ai backend">
+          <div class="project-card-header proj-bg-1 has-media project-media-rag">
+            <div class="project-header-label">RAG / Cloud AI</div>
+            <div class="overlay">
+              <a href="https://github.com/montuyajoel/Flexible_RAG_Platform"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View on GitHub ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Flexible RAG Platform</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Flexible RAG Platform / GKE
+            </p>
+            <p>
+              Built a cloud-deployed, production-oriented Retrieval-Augmented Generation pipeline using FastAPI,
+              ChromaDB and Ollama. The service is deployed without bundled source data and supports runtime
+              document ingestion, vector indexing, retrieval, persistent storage, Docker containerization,
+              GitHub Actions CI/CD, and Kubernetes deployment on GKE.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">RAG</span>
+              <span class="tech-tag">ChromaDB</span>
+              <span class="tech-tag">Ollama</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Kubernetes / GKE</span>
+              <span class="tech-tag">GitHub Actions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: ScribeFlow -->
+        <div class="project-card" data-cats="ai">
+          <div class="project-card-header proj-bg-2 has-media project-media-scribeflow">
+            <div class="project-header-label">Speech AI</div>
+            <div class="overlay">
+              <a href="https://github.com/montuyajoel/ScribeFlow-speech-to-text"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View on GitHub ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>ScribeFlow — Local Speech-to-Text &amp; AI Study Assistant</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Speech AI / Python / Flask
+            </p>
+            <p>
+              Built a privacy-focused speech-to-text application using Python, Flask,
+              faster-whisper and CTranslate2 for local Whisper inference. Implemented
+              streamed segment-level transcription with timestamps, model caching,
+              VAD filtering, synchronized audio playback, transcript search and
+              TXT/SRT/VTT exports, with optional streamed AI study-note generation
+              through Ollama or OpenAI.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">faster-whisper</span>
+              <span class="tech-tag">CTranslate2</span>
+              <span class="tech-tag">SSE</span>
+              <span class="tech-tag">Ollama</span>
+              <span class="tech-tag">OpenAI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: LangChain Weather Agent -->
+        <div class="project-card" data-cats="ai backend">
+          <div class="project-card-header proj-bg-2 has-media project-media-weather">
+            <div class="project-header-label">Agentic AI</div>
+            <div class="overlay">
+              <a href="https://github.com/montuyajoel/LangChain-Weather-Agent"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View on GitHub ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>LangChain Weather Agent</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Agentic AI / FastAPI
+            </p>
+            <p>
+              Developed a conversational weather agent using FastAPI, LangGraph,
+              LangChain and Open-Meteo with session memory, tool-based retrieval,
+              OpenAI/Ollama support, automated tests and pull-request validation.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Pytest</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Books Catalog API -->
+        <div class="project-card" data-cats="backend">
+          <div class="project-card-header proj-bg-3 has-media project-media-django">
+            <div class="project-header-label">Backend / DevOps</div>
+            <div class="overlay">
+              <a href="https://github.com/montuyajoel/DevOps-Books-Catalog-API"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View on GitHub ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Django Books Catalog REST API</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Backend / DevOps
+            </p>
+            <p>
+              Built a RESTful catalog backend with Django and PostgreSQL, automated
+              testing and GitHub Actions, Docker containerization, and Kubernetes
+              deployment using Helm for application configuration and service management.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Helm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: MSc Capstone -->
+        <div class="project-card" data-cats="data ai">
+          <div class="project-card-header proj-bg-4 has-media project-media-exercise">
+            <div class="project-header-label">Deep Learning</div>
+            <div class="overlay">
+              <span class="overlay-btn primary"
+                    aria-disabled="true"
+                    title="No public GitHub repository is currently available"
+                    style="text-decoration:none;cursor:default;">
+                MSc Capstone
+              </span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Fine-Grained Gym Exercise Recognition</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              MSc Data Analytics Capstone
+            </p>
+            <p>
+              Compared CNN, LSTM, GRU, CNN-BiLSTM and CNN-ResBiGRU architectures
+              using wearable accelerometer and gyroscope data. Achieved 97.05% test
+              accuracy with CNN-BiLSTM and 96.72% F1-score with CNN-ResBiGRU.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Deep Learning</span>
+              <span class="tech-tag">Time Series</span>
+              <span class="tech-tag">Wearable Sensors</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Tourism Revenue Forecasting -->
+        <div class="project-card" data-cats="data">
+          <div class="project-card-header proj-bg-2 has-media project-media-tourism">
+            <div class="project-header-label">Machine Learning</div>
+            <div class="overlay">
+              <a href="https://github.com/montuyajoel/IRL-Tourism-Revenue-Forecasting"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="overlay-btn primary"
+                 style="text-decoration:none">
+                View on GitHub ↗
+              </a>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Irish Tourism Revenue Forecasting</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Machine Learning / Forecasting
+            </p>
+            <p>
+              Applied machine-learning and ensemble methods with GridSearchCV to model
+              Irish tourism revenue using historical datasets and a CRISP-DM workflow,
+              combining predictive modelling with structured data analysis.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-Learn</span>
+              <span class="tech-tag">GridSearchCV</span>
+              <span class="tech-tag">CRISP-DM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 7: Fishing Boundary Monitoring -->
+        <div class="project-card" data-cats="other">
+          <div class="project-card-header proj-bg-3 has-media project-media-fishing">
+            <div class="project-header-label">Embedded / IoT</div>
+            <div class="overlay">
+              <span class="overlay-btn primary"
+                    aria-disabled="true"
+                    title="No public GitHub repository is currently available"
+                    style="text-decoration:none;cursor:default;">
+                Engineering Project
+              </span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Fishing Boundary Monitoring System</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Embedded / IoT System
+            </p>
+            <p>
+              Designed an IoT hardware and software solution for tracking vessel
+              positions using PIC microcontrollers, with a C# .NET administration
+              application, Google Maps integration, boundary alerts and MSSQL logging.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">C / C++</span>
+              <span class="tech-tag">C# .NET</span>
+              <span class="tech-tag">Google Maps API</span>
+              <span class="tech-tag">MSSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 9: Accenture Telco Chatbot -->
+        <div class="project-card" data-cats="ai backend">
+          <div class="project-card-header proj-bg-4 has-media project-media-telco">
+            <div class="project-header-label">Enterprise AI</div>
+            <div class="overlay">
+              <span class="overlay-btn primary"
+                    aria-disabled="true"
+                    title="Commercial enterprise project — source code is not public"
+                    style="text-decoration:none;cursor:default;">
+                Enterprise Project
+              </span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3>Telco Chatbot — Conversational AI</h3>
+            <p style="margin-bottom:8px;font-weight:600;color:var(--accent-teal);">
+              Accenture — Enterprise Deployment
+            </p>
+            <p>
+              Developed Node.js backend functionality, security-verification workflows,
+              API integrations and custom customer journeys across 13 live conversational-AI
+              use cases, with production support and telemetry analysis using Azure KQL.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">REST APIs</span>
+              <span class="tech-tag">Azure KQL</span>
+              <span class="tech-tag">Production Support</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-tag">03 · Toolkit</p>
+        <h2 class="section-title">Skills &amp; <span>Stack</span></h2>
+        <p class="section-subtitle">The languages, frameworks and platforms I use day to day.</p>
+      </div>
+      <div class="skills-layout">
+
+        <div class="skills-category">
+          <h3>Applied AI &amp; Machine Learning</h3>
+          <p style="margin-bottom:18px;color:var(--text-secondary);">
+            Commercial conversational-AI experience combined with recent hands-on work in RAG, agentic systems,
+            deep learning, and LLM integration.
+          </p>
+          <div class="tech-tags" style="gap:10px;">
+            <span class="tech-tag">Conversational AI</span>
+            <span class="tech-tag">Speech AI / Whisper</span>
+            <span class="tech-tag">RAG</span>
+            <span class="tech-tag">Microsoft Foundry</span>
+            <span class="tech-tag">Azure AI Search</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">LangGraph</span>
+            <span class="tech-tag">OpenAI / Ollama</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Deep Learning</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">OpenCV</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3>Backend Engineering</h3>
+          <p style="margin-bottom:18px;color:var(--text-secondary);">
+            API development and integration experience spanning enterprise conversational-AI systems and recent Python/Node.js projects.
+          </p>
+          <div class="tech-tags" style="gap:10px;">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">JWT</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">KQL</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3>Cloud, DevOps &amp; Infrastructure</h3>
+          <p style="margin-bottom:18px;color:var(--text-secondary);">
+            Cloud and delivery tooling demonstrated through Azure production support and recent containerized deployments on GKE.
+          </p>
+          <div class="tech-tags" style="gap:10px;">
+            <span class="tech-tag">Azure</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Google Cloud / GKE</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Kubernetes</span>
+            <span class="tech-tag">Helm</span>
+            <span class="tech-tag">GitHub Actions</span>
+            <span class="tech-tag">CI/CD</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">GitHub</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3>Data &amp; Storage</h3>
+          <p style="margin-bottom:18px;color:var(--text-secondary);">
+            Data processing, analytics, relational/document storage, vector retrieval, and telemetry analysis.
+          </p>
+          <div class="tech-tags" style="gap:10px;">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Supabase</span>
+            <span class="tech-tag">ChromaDB</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Scikit-Learn</span>
+            <span class="tech-tag">Spark</span>
+            <span class="tech-tag">Hadoop</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <h3>AI-Assisted Development</h3>
+          <p style="margin-bottom:18px;color:var(--text-secondary);">
+            This portfolio site was built with AI-assisted workflows — using coding agents and LLM tools
+            to accelerate design, implementation, and iteration.
+          </p>
+          <div class="tech-tags" style="gap:10px;">
+            <span class="tech-tag">Cursor</span>
+            <span class="tech-tag">Antigravity</span>
+            <span class="tech-tag">Codex</span>
+            <span class="tech-tag">AI-Assisted Coding</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -904,12 +916,13 @@
         </p>
         <div class="info-grid" style="max-width:480px;margin:0 auto 36px;text-align:left;background:rgba(255,255,255,0.02);padding:24px;border-radius:var(--radius-lg);border:1px solid var(--border-color);">
           <div class="info-item">
-            <span class="info-label">🇮🇪 Irish Phone</span>
+            <span class="info-label">Irish Phone</span>
             <span class="info-value"><a href="tel:+353838119159" style="color:var(--text-primary);text-decoration:none;">+353 83 811 9159</a></span>
           </div>
           <div class="info-item">
-            <span class="info-label">📧 Email</span>
-            <span class="info-value"><a href="mailto:joelalbertmontuya@gmail.com" style="color:var(--text-primary);text-decoration:none;">joelalbertmontuya@gmail.com</a></span>
+            <span class="info-label">Email</span>
+            <span class="info-value"><a href="mailto:joelalbertmontuya@gmail.com" style="color:var(--text-primary);text-decoration:none;">joelalbertmontuya@gmail.com</a>
+              <button type="button" class="copy-btn" data-copy="joelalbertmontuya@gmail.com" aria-label="Copy email address">Copy</button></span>
           </div>
         </div>
         <a href="mailto:joelalbertmontuya@gmail.com" class="btn btn-primary" style="font-size:1rem;padding:15px 36px">
@@ -934,6 +947,22 @@
       </div>
     </div>
   </section>
+
+  <!-- Quick-search palette (Ctrl/⌘+K or /) -->
+  <dialog id="cmdk" aria-label="Quick search">
+    <div class="cmdk-box">
+      <div class="cmdk-input-row">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="cmdk-input" type="text" placeholder="Jump to a section, project or action…" autocomplete="off" spellcheck="false"
+               role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list" />
+        <kbd>Esc</kbd>
+      </div>
+      <ul id="cmdk-list" role="listbox"></ul>
+    </div>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <script src="main.js"></script>
 </body>
