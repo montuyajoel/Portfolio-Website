@@ -20,6 +20,185 @@ function toggleTheme() {
 document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
 
+// ─── Neural-Network Hero Background ────────────────────────────
+// Layers of nodes with signals propagating forward (a forward pass),
+// nodes lighting up as signals arrive, and the cursor acting as an input.
+(function initNeuralBg() {
+  const canvas = document.getElementById('neural-bg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const hero = document.getElementById('home');
+  let w = 0, h = 0, nodes = [], edges = [], pulses = [];
+  let accent = '#818cf8', tint = '255 255 255';
+  let running = false, lastSeed = 0;
+  const mouse = { x: -1e4, y: -1e4 };
+
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement);
+    accent = cs.getPropertyValue('--accent').trim() || accent;
+    tint = cs.getPropertyValue('--tint').trim() || tint;
+  }
+
+  function build() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = hero.clientWidth;
+    h = hero.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const layers = w < 700 ? [3, 5, 6, 5, 3] : [4, 7, 9, 9, 7, 4];
+    nodes = [];
+    edges = [];
+    pulses = [];
+    const byLayer = layers.map((count, li) => {
+      const x = w * (0.06 + 0.88 * li / (layers.length - 1));
+      return Array.from({ length: count }, (_, i) => {
+        const node = {
+          bx: x + (Math.random() - 0.5) * 30,
+          by: h * (0.12 + 0.76 * (i + 0.5) / count) + (Math.random() - 0.5) * 24,
+          phase: Math.random() * Math.PI * 2,
+          glow: 0,
+          out: [],
+          x: 0, y: 0,
+        };
+        nodes.push(node);
+        return node;
+      });
+    });
+    // Connect each layer to the next (sparse, like a pruned dense layer).
+    for (let li = 0; li < byLayer.length - 1; li++) {
+      byLayer[li].forEach(a => byLayer[li + 1].forEach(b => {
+        if (Math.random() < 0.45) {
+          const e = { a, b };
+          edges.push(e);
+          a.out.push(e);
+        }
+      }));
+    }
+    build.inputs = byLayer[0];
+    place(0);
+  }
+
+  function place(t) {
+    nodes.forEach(n => {
+      n.x = n.bx + Math.sin(t * 0.0006 + n.phase) * 5;
+      n.y = n.by + Math.cos(t * 0.0005 + n.phase) * 5;
+    });
+  }
+
+  function fire(node) {
+    node.glow = 1;
+    // Each activation passes on along one or two outgoing weights.
+    const outs = node.out.slice().sort(() => Math.random() - 0.5).slice(0, 1 + (Math.random() < 0.4));
+    outs.forEach(e => { if (pulses.length < 60) pulses.push({ e, p: 0, speed: 0.008 + Math.random() * 0.01 }); });
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    place(t);
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = `rgb(${tint} / 0.05)`;
+    ctx.beginPath();
+    edges.forEach(({ a, b }) => { ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); });
+    ctx.stroke();
+
+    // Cursor as an extra input: faint links to nearby nodes.
+    ctx.strokeStyle = accent;
+    nodes.forEach(n => {
+      const d = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+      if (d < 160) {
+        n.glow = Math.max(n.glow, 0.6 * (1 - d / 160));
+        ctx.globalAlpha = 0.25 * (1 - d / 160);
+        ctx.beginPath(); ctx.moveTo(mouse.x, mouse.y); ctx.lineTo(n.x, n.y); ctx.stroke();
+      }
+    });
+
+    // Signals: a short bright streak travelling along each edge.
+    ctx.lineWidth = 1.6;
+    ctx.lineCap = 'round';
+    pulses.forEach(pl => {
+      const { a, b } = pl.e;
+      const p0 = Math.max(pl.p - 0.12, 0);
+      ctx.globalAlpha = 0.75;
+      ctx.beginPath();
+      ctx.moveTo(a.x + (b.x - a.x) * p0, a.y + (b.y - a.y) * p0);
+      ctx.lineTo(a.x + (b.x - a.x) * pl.p, a.y + (b.y - a.y) * pl.p);
+      ctx.stroke();
+    });
+
+    nodes.forEach(n => {
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = `rgb(${tint} / 0.22)`;
+      ctx.beginPath(); ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2); ctx.fill();
+      if (n.glow > 0.02) {
+        ctx.fillStyle = accent;
+        ctx.globalAlpha = n.glow * 0.9;
+        ctx.beginPath(); ctx.arc(n.x, n.y, 2.6 + n.glow * 2, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = n.glow * 0.18;
+        ctx.beginPath(); ctx.arc(n.x, n.y, 10 + n.glow * 8, 0, Math.PI * 2); ctx.fill();
+      }
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function step(t) {
+    if (!running) return;
+    if (!document.hidden) {
+      // Feed a new input every ~0.7s.
+      if (t - lastSeed > 700) {
+        lastSeed = t;
+        fire(build.inputs[Math.floor(Math.random() * build.inputs.length)]);
+      }
+      pulses = pulses.filter(pl => {
+        pl.p += pl.speed;
+        if (pl.p >= 1) { fire(pl.e.b); return false; }
+        return true;
+      });
+      nodes.forEach(n => { n.glow *= 0.96; });
+      draw(t);
+    }
+    requestAnimationFrame(step);
+  }
+
+  readColors();
+  build();
+
+  if (prefersReducedMotion) {
+    // Still frame: the network without moving signals.
+    draw(0);
+  } else {
+    // Only animate while the hero is on screen.
+    new IntersectionObserver(([entry]) => {
+      const visible = entry.isIntersecting;
+      if (visible && !running) { running = true; requestAnimationFrame(step); }
+      running = visible;
+    }).observe(hero);
+    if (canHover) {
+      window.addEventListener('pointermove', e => {
+        const r = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      }, { passive: true });
+    }
+  }
+
+  // Re-read colours when the theme changes; rebuild on resize.
+  new MutationObserver(() => { readColors(); if (prefersReducedMotion) draw(0); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => { readColors(); if (prefersReducedMotion) draw(0); });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    // Mobile address bars fire resize on scroll; only rebuild when width changes.
+    resizeTimer = setTimeout(() => {
+      if (hero.clientWidth !== w) { build(); if (prefersReducedMotion) draw(0); }
+    }, 150);
+  });
+})();
+
+
 // ─── Navbar Scroll Effect ──────────────────────────────────────
 (function initNavbar() {
   const nav = document.getElementById('navbar');
